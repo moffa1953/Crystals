@@ -2,128 +2,28 @@
 <html>
 <head>
 	<title>HW4 Crystal Game</title>
-
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>   
 </head>
 <body>
-        <div id="tbox">Crystal Collector</div>
-        <div id="rules">
-		  <p>You will be given a random number at the start of the game</p>
-		  <p>There a four crystals below. By clicking on a crystal you will; add a specific amount of points to your total score/</p>
-		  <p>You win the game by matching your score with the random number. You lose the gane if your score is higher than the random number.</p>
-		  <p>The value of each crystal is hidden from you until you click on it to find its value.</p>
-		  <p>Each time the game restarts, the game will change the value of each crystal</p>
-        </div>
+    <div id="tbox">Crystal Collector</div>
+    <div id="rules">
+        <p>You will be given a random number at the start of the game</p>
+        <p>There a four crystals below. By clicking on a crystal you will; add a specific amount of points to your total score/</p>
+        <p>You win the game by matching your score with the random number. You lose the gane if your score is higher than the random number.</p>
+        <p>The value of each crystal is hidden from you until you click on it to find its value.</p>
+        <p>Each time the game restarts, the game will change the value of each crystal</p>
+    </div>
 
-        <div id="targetScore"></div>
-        <div id="crystals"></div>
-        <div id="currentScore"></div>
-        <div id="wonLost"></div>
-        <br>
-        <div id="message"></div>
-        <button id="reset-button"><h2>RESET</h2></button>
+    <div id="targetScore"></div>
+    <div id="crystals"></div>
+    <div id="currentScore"></div>
+    <div id="wonLost"></div>
+    <br>
+    <div id="message"></div>
+    <button id="reset-button"><h2>RESET</h2></button>
 
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <script type="text/javascript">
-
-  		// initialize valuea
-  		var imageList = ["images.jpeg","images-1.jpeg","images-2.jpeg","images-3.jpeg"]
-		var minNumber = 1;
-		var maxNumber = 12;
-		var wonCount = 0;
-		var lossCount = 0;
-
-        initVars();
-
-	    $(document).on("click", ".crystal-image", function() {
-            console.log("this "+this)
-   
-  		     var crystalValue = ($(this).attr("data-crystalvalue"));
-   		     
-             
-
-             currentScore = currentScore + parseInt(crystalValue);
-             if(currentScore > targetScore) {
-        	      message = "You Lost!!";
-        	      lossCount++;
-             }
-
-             if (currentScore == targetScore) {
-        	      message = "You Won!!"
-        	      wonCount++;
-             }
-
-             console.log("currentScore "+currentScore);
-             console.log("crystalValue "+crystalValue)
-
-             updateScreen();
- 
-         })
-
-		function randomNumberFromRange(min,max) {
-    		return Math.floor(Math.random()*(max-min+1)+min);    		
-		}
-
-		function updateScreen() {
-			$("#wonLost").text("Games Won:  "+wonCount);
-			$("#wonLost").append("  -  Games Lost: "+lossCount);
-			$("#currentScore").text("Current Score  "+currentScore);
-			$("#targetScore").text("Target Score:  "+targetScore);
-			$("#message").text(message);
-
-		}
-
-        function initVars() {
-
-            crystalValues = [0,0,0,0];
-            imageCrystal = [];
-            currentScore = 0;
-            targetScore = randomNumberFromRange(19, 40);
-            message = "";
-
-            x = 0;
-
-            $(".crystal-image").removeClass();
-            $("#crystals").empty();
-
-            // get values for crystal - loop will prevent duplicate crysta; values
-
-            while (x < 4) {
-                 randomNumber = randomNumberFromRange(1, 12);
-                 if($.inArray(randomNumber, crystalValues) == -1) {
-                    crystalValues[x] = randomNumber;
-                    x++;
-                 }
-            }
-
-            // add values to the crystals
-
-            for (var i = 0; i < 4; i++) {
-
-                imageCrystal = $("<img>");
-
-                imageCrystal.addClass("crystal-image");
-
-                imageCrystal.attr("src","assets/images/"+imageList[i]);
-                imageCrystal.attr("height","100px")
-   
-                imageCrystal.attr("data-crystalvalue", crystalValues[i]);
-
-                $("#crystals").append(imageCrystal);
-           }
-
-           updateScreen();
-
-        }
-
-        $("#reset-button").on("click", function() {
-           initVars();
-        })
-
-
-	</script>
 
 </body>
 </html>
