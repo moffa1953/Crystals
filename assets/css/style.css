@@ -1,0 +1,66 @@
+#tbox {
+        position: relative;
+        background-color: brown;
+        width: 300px;
+        color: white;
+        text-align: center;
+        font-family: courier;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+}
+
+#rules {
+        background-color: beige;
+        width: 700px;
+        font-family: courier;
+        font-size: 18px;
+        font-weight: bold;
+}
+
+.crystals {
+        height: 50px;
+        width: 50px;
+}
+
+.crystal.image {
+        height: 35px;
+        width: 35px;
+        padding: 5px;
+}
+
+#targetScore {
+        width: 300px;
+        font-family: courier;
+        font-weight: bold;
+        color: white;
+        background-color: green;
+        font-size: 24px;
+}
+
+#currentScore {
+        width: 300px;
+        font-family: courier;
+        font-weight: bold;
+        color: white;
+        background-color: red;
+        font-size: 24px;
+}
+
+#wonLost {
+        width: 450px;
+        font-family: courier;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+        font-size: 24px;
+}
+
+#message {
+        width: 300px;
+        font-family: courier;
+        font-weight: bold;
+        color: white;
+        background-color: blue;
+        font-size: 24px;
+}
